@@ -1,19 +1,14 @@
 let input;
 let total = 0;
 
-while (true) {
-    let addNumber = prompt('Enter the number');
-    
-    if (addNumber === null) {
-        break;
-    }
-
-    addNumber = Number(addNumber);
-    const isNumber = Number.isNaN(addNumber)
+do {
+    input = prompt('Enter the number');
+    input = Number(input);
+    const isNumber = Number.isNaN(input);
     if (isNumber === true) {
         continue;
     }
-    total += addNumber;
-}
+    total += input;
+}while (input !== 0)
 
 console.log(`Sum total ${total}`)
