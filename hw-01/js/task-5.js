@@ -1,9 +1,9 @@
-let country = prompt('Введите страну для доставки');
+let country = prompt('Введите страну для доставки').toLowerCase();
 if (country === 'null') {
     console.log('Отменено пользователем!')
 }
 else {
-    switch ((country).toLowerCase()) {
+    switch ((country)) {
         case 'китай':
             console.log(`Доставка в ${country} будет стоить 100 кредитов`)
             break;
