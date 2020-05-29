@@ -1,13 +1,6 @@
 const formatString = function (string) {
     return (string.length <= 40 ? string : `${string.slice(0, 40)}...`);
 
-    // if (string.length >= 40) {
-    //     const arrayString = string.split('');
-    //     arrayString.length = 40;
-    //     string = arrayString.join('');
-    //     return console.log(string,'...');
-    // }
-    // return console.log(string);
 };
 
 /*
