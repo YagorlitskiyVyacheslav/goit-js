@@ -9,11 +9,17 @@ do {
         alert('No number wes entered. Please try again.');
         continue;
     }
-    numbers.push(+input); 
+    if (input !== null) {
+        numbers.push(+input);
+    }
 } while (input !== null)
 
-for (let number of numbers) {
-    total += number;
+if (numbers.length !== 0) {
+    for (let number of numbers) {
+        total += number;
+    }
+    console.log(`The total sum of numbers is equal to: ${total}`);
+} else if (numbers.length === 0) {
+    console.log ('The array is empty');
 }
 
-console.log(`The totoal sum of numbers is equal to: ${total}`);
