@@ -6,7 +6,7 @@ const Transaction = {
     DEPOSIT: 'deposit',
     WITHDRAW: 'withdraw',
 };
-
+        let id = 0;
 /*
  * Каждая транзакция это объект со свойствами: id, type и amount
  */
@@ -23,12 +23,8 @@ const account = {
      * Принимает сумму и тип транзакции.
      */
     createTransaction(amount, type) {
-        if (type === 'deposit') {
-           return this.transactions.push({deposit: amount})
-        }
-        if (type === 'withdraw') {
-           return this.transactions.push({withdraw: amount})
-        }
+        this.transactions.push({'id': id, 'type': type, 'amount': amount})
+        id += 1;
     },
 
     /*
@@ -58,13 +54,8 @@ const account = {
      * Метод возвращает текущий баланс
      */
     getBalance() {
-        for (let transaction of this.transactions) {
-            if (transaction.deposit) {
-                this.balance += transaction.deposit;
-            }
-            if (transaction.withdraw) {
-                this.balance -= transaction.withdraw;
-            }
+        for (let element of this.transactions) {
+            element['type'] === 'deposit' ? this.balance += element['amount'] : this.balance -= element['amount'];
         }
     },
 
@@ -82,9 +73,8 @@ const account = {
     getTransactionTotal(type) {
         let total = 0;
         for (let transaction of this.transactions) {
-            console.log(transaction.type);
-            if (transaction.type) {
-                total += transaction.type;
+            if (transaction.type === 'deposit') {
+                total += transaction['amount'];
             }
         }
         return total;
@@ -97,7 +87,5 @@ account.withdraw(1000);
 account.deposit(25000);
 account.withdraw(3500);
 account.getBalance();
-console.log(account.getTransactionDetails(1));
-console.log(account.getTransactionTotal(Transaction.DEPOSIT));
-
 console.log(account)
+console.log(account.getTransactionTotal(Transaction.DEPOSIT))
