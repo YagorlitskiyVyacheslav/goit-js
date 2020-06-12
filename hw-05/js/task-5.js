@@ -1,6 +1,6 @@
 class Car {
-    static getSpecs(obj) {
-        console.log(`maxSpeed: ${obj.maxSpeed}, speed: ${obj.speed}, isOn: ${obj.isOn}, distance: ${obj.distance}, price: ${obj.price}`);
+    static getSpecs(car) {
+        console.log(`maxSpeed: ${car.maxSpeed}, speed: ${car.speed}, isOn: ${car.isOn}, distance: ${car.distance}, price: ${car.price}`);
     }
     constructor({speed = 0, price, maxSpeed, isOn = false, distance = 0}) {
         this.speed = speed;
@@ -12,8 +12,8 @@ class Car {
     get price() {
         return this._price;
     }
-    set price(value) {
-        this._price = value;
+    set price(newPrice) {
+        this._price = newPrice;
     }
     /*
      * Добавь геттер и сеттер для свойства price,
@@ -43,9 +43,9 @@ class Car {
      * при условии что результирующая скорость
      * не больше чем значение свойства maxSpeed
      */
-    accelerate(value) {
+    accelerate(addSpeed) {
         if (this.speed < this.maxSpeed) {
-            this.speed += value;
+            this.speed += addSpeed;
         }
     }
 
@@ -53,9 +53,11 @@ class Car {
      * Отнимает от свойства speed полученное значение,
      * при условии что результирующая скорость не меньше нуля
      */
-    decelerate(value) {
-        if (this.speed > 0) {
-            this.speed -= value;
+    decelerate(removeSpeed) {
+        if (this.speed - removeSpeed > 0) {
+            this.speed -= removeSpeed;
+        } else {
+            this.speed = 0;
         }
     }
 
@@ -80,12 +82,14 @@ mustang.drive(2);
 Car.getSpecs(mustang);
 // maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000
 
-mustang.decelerate(20);
+mustang.decelerate(60);
+Car.getSpecs(mustang);
+
 mustang.drive(1);
 mustang.turnOff();
 
 Car.getSpecs(mustang);
-// // maxSpeed: 200, speed: 30, isOn: false, distance: 130, price: 2000
+// // maxSpeed: 200, speed: 0, isOn: false, distance: 130, price: 2000
 
 console.log(mustang.price); // 2000
 mustang.price = 4000;
