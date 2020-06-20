@@ -16,7 +16,8 @@ console.table(getUsersWithEyeColor(users, 'blue')); // [объект Moore Hensl
 //TODO task-03
 
 const getUsersWithGender = (users, gender) => {
-    return users.filter(user => user.gender === gender)
+    return users
+        .filter(user => user.gender === gender)
         .map(obgectOnGender => obgectOnGender.name);
 };
 
@@ -46,8 +47,7 @@ console.table(getUsersWithAge(users, 30, 40));
 
 //TODO task-07
 
-const calculateTotalBalance = users => users.map(user => user.balance)
-    .reduce((acc, balance) => acc + balance, 0);
+const calculateTotalBalance = users => users.reduce((acc, user) => acc + user.balance, 0);
 
 console.log(calculateTotalBalance(users)); // 20916
 
@@ -64,10 +64,12 @@ console.log(getUsersWithFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sher
 //TODO task-09
 
 const getNamesSortedByFriendsCount = users => {
-    return users.sort((a, b) => (a.friends.length < b.friends.length) ? 1 : ((b.friends.length < a.friends.length) ? -1 : 0));
+    return users
+    .sort((a, b) => (b.friends.length < a.friends.length) ? 1 : ((a.friends.length < b.friends.length) ? -1 : 0))
+    .map(user => user.name);
 };
 
-console.table(getNamesSortedByFriendsCount(users));
+console.log(getNamesSortedByFriendsCount(users));
 // [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dtson', 'Sheree Anthony', 'Ross Vazquez' ]
 
 //TODO task-10
