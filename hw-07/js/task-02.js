@@ -8,9 +8,14 @@ const ingredients = [
     'Зелень',
     'Приправы',
 ];
+const ItemArray = () => {
+    const ItemAray = [];
+    ingredients.forEach(ingredient => {
+        const listItem = document.createElement('li');
+        listItem.textContent = ingredient;
+        ItemAray.push(listItem);
+    })
+    return ItemAray
+};
 
-ingredients.forEach(ingredient => {
-    const listItem = document.createElement('li');
-    listItem.textContent = ingredient;
-    ingredientsList.appendChild(listItem);
-})
+ingredientsList.append(...ItemArray());

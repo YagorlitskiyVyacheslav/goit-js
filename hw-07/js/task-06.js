@@ -4,12 +4,10 @@ const dataLength = +inputRef.dataset.length;
 
 const verification = (event) => {
     if (event.type === 'blur') {
-        dataLength === inputRef.value.length ? inputRef.classList.add('valid') : inputRef.classList.add('invalid');
+        counterValRef.textContent = event.target.dataset.action === 'increment' ? counterValue += 1 : counterValue -= 1;
     } else {
         inputRef.className = '';
     }
-    console.log(inputRef.className)
-    // if (inputRef.classList.contains)
 }
 
 inputRef.addEventListener('blur', verification);

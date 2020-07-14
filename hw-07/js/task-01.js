@@ -5,11 +5,8 @@ const arrayCategories = [...categoriesRef.children];
 console.log(`В списке ${arrayCategories.length} категории.`)
 
 arrayCategories.forEach((category, i) => {
-    const categoryTitle = category.firstElementChild.textContent;
-    const categoryItems = [...category.lastElementChild.children];
-    
     console.group(i+1);
-    console.log(`Категория: ${categoryTitle}`);
-    console.log(`Количество элементов: ${categoryItems.length}`);
+    console.log(`Категория: ${category.firstElementChild.textContent}`);
+    console.log(`Количество элементов: ${[...category.lastElementChild.children].length}`);
     console.groupEnd();
 });
