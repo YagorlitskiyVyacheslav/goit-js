@@ -1,10 +1,14 @@
 const inputRef = document.querySelector("#validation-input");
 
-const dataLength = +inputRef.dataset.length;
 
 const verification = (event) => {
+    const dataLength = +inputRef.dataset.length;
     if (event.type === 'blur') {
-        counterValRef.textContent = event.target.dataset.action === 'increment' ? counterValue += 1 : counterValue -= 1;
+        if (inputRef.value.length === dataLength) {
+            inputRef.classList.add('valid');
+        } else {
+            inputRef.classList.add('invalid');
+        }
     } else {
         inputRef.className = '';
     }
