@@ -4,8 +4,7 @@ const counter = document.querySelector('#counter');
 let counterValue = +counterValRef.textContent;
 
 const counterFunc = (event) => {
-    event.target.dataset.action === 'increment' ? counterValue += 1 : counterValue  -= 1;
-    counterValRef.textContent = counterValue;
+    counterValRef.textContent = event.target.dataset.action === 'increment' ? ++counterValue: --counterValue;
 }
 
 counter.addEventListener('click', counterFunc);

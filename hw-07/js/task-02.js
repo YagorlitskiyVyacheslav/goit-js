@@ -8,14 +8,10 @@ const ingredients = [
     'Зелень',
     'Приправы',
 ];
-const ItemArray = () => {
-    const ItemAray = [];
-    ingredients.forEach(ingredient => {
+const ItemArray = () => ingredients.map(ingredient => {
         const listItem = document.createElement('li');
         listItem.textContent = ingredient;
-        ItemAray.push(listItem);
-    })
-    return ItemAray
-};
+        return listItem;
+    });
 
 ingredientsList.append(...ItemArray());

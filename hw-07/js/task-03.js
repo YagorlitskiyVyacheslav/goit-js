@@ -14,12 +14,8 @@ const images = [{
 
 const galleryRef = document.querySelector('#gallery');
 
-const galleryImg = () => {
-    let galleryImg = '';
-    images.forEach(image => {
-        galleryImg = galleryImg + `<li class="gallery__item"><img src="${image.url}" alt="${image.alt}" class="gallery__img"></li>`;
-    });
-    return galleryImg;
-}
+const galleryImg = () => images.reduce((acc, image) => {
+        return acc + `<li class="gallery__item"><img src="${image.url}" alt="${image.alt}" class="gallery__img"></li>`;
+    }, '');
 
 galleryRef.insertAdjacentHTML('beforeend', galleryImg());
