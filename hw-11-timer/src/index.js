@@ -1,15 +1,26 @@
 import './styles.css';
-
+let intervalId = null;
 class CountdownTimer {
     constructor({ selector, targetDate }) {
         this.selector = selector;
         this.targetDate = targetDate;
     }
     start () {
-        setInterval(() => {
+        if(intervalId !== null) {
+            clearInterval(intervalId);
+            intervalId = null;
+            console.warn('The interval is already running!');
+            console.info(`Reset the current interval, run a new one!!!`);
+        }
+        console.log(`Start the timer. Target date: ${this.targetDate}`);
+        intervalId = setInterval(() => {
             const nowDate = new Date();
             const deltaTime = +this.targetDate - +nowDate;
-            console.log(deltaTime.getDate())
+            if(deltaTime <= 0) {
+                clearInterval(intervalId);
+                intervalId = null;
+                return alert('Time is up');
+            }
             return this.updateClockface(deltaTime);
         }, 1000); 
     }
@@ -35,10 +46,17 @@ class CountdownTimer {
     }
 };
 
-const FirstTimer = new CountdownTimer({
-    selector: '#timer-1',
-    targetDate: new Date('Aug 1, 2020'),
-});
+const dateInputRef = document.getElementById('date-input');
+const dateFormRef = document.getElementById('form');
 
-FirstTimer.start()
+dateFormRef.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const FirstTimer = new CountdownTimer({
+        selector: '#timer-1',
+        targetDate: new Date(`${dateInputRef.valueAsDate}`),
+    });
+
+    FirstTimer.start();
+})
+
 
