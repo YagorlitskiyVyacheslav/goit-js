@@ -1,0 +1,17 @@
+{{#each this}}
+<h2 class="country-name">{{name}}</h2>
+<div class="flex-container">
+<div>
+<p class="country-capital"><b>Capital:</b> {{capital}}</p>
+<p class="country-population"><b>Population:</b> {{population}}</p>
+<ul class="country-lang-list"><p><b>Languages:</b></p>
+    {{#each languages}}
+    <li class="counrty-lang-item">- {{name}}</li>
+    {{/each}}
+</ul>
+</div>
+<div>
+<img src="{{flag}}" alt="the flag of {{name}} was to be here" class="country-flag">
+</div>
+</div>
+{{/each}}
