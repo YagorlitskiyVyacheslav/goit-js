@@ -1,0 +1,11 @@
+{{#each this}}
+    <li>
+        <img src="{{webformatURL}}" alt="{{tags}}" height="250px">
+        <div class="stats">
+        <p class="stats-item"><i class="fa fa-thumbs-up primary-color" aria-hidden="true"></i> {{likes}}</p>
+        <p class="stats-item"><i class="fa fa-eye primary-color" aria-hidden="true"></i> {{views}}</p>
+        <p class="stats-item"><i class="fa fa-commenting primary-color" aria-hidden="true"></i> {{comments}}</p>
+        <p class="stats-item"><i class="fa fa-download primary-color" aria-hidden="true"></i> {{downloads}}</p>
+        </div>
+    </li>
+{{/each}}
