@@ -1,4 +1,5 @@
 import refs from './refs';
+import notification from './pnotify';
 
 const apiKey = '17953661-fbb86eb9264530d2720389de2'
 
@@ -9,7 +10,6 @@ export default {
     getImage (query) {
         const baseUrl = `https://pixabay.com/api/`;
         const params = `?image_type=photo&orientation=horizontal&q=${query}&page=${this.page}&per_page=12&key=${apiKey}`
-
         return fetch(baseUrl + params)
         .then(res => res.json())
         .then(data => data.hits)
