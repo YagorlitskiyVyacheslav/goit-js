@@ -19,7 +19,6 @@ function fetchCountries(queryCounrty) {
   return fetch(baseUrl + `name/${queryCounrty}`)
     .then(res => res.json())
     .then(country => {
-        console.log(country);
         sampleOfCountries(country);
     })
     .catch(err => err);

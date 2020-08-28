@@ -2,13 +2,18 @@ import './styles.css';
 import fetchCountries from './js/fetchCountries';
 import refs from './js/refs';
 
-// console.log(fetchCountries('eesti'))
+var debounce = require('lodash.debounce');
 
-refs.searchForm.addEventListener('input', (e) => {
+refs.searchForm.addEventListener(
+  'input',
+  debounce(e => {
     refs.counrtyContainer.innerHTML = '';
-    // console.log(e.target.value)
-    fetchCountries(e.target.value)
-})
-
-
-
+    fetchCountries(e.target.value);
+    refs.spiner.classList.remove('loader');
+  }, 1000),
+);
+refs.searchForm.addEventListener(
+  'input', () => {
+    refs.spiner.classList.add('loader');
+  }
+);
