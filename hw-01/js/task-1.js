@@ -10,3 +10,4 @@ console.log(`Выбран ${name}, цена за штуку ${price} креди�
 
 console.log('hello world!!!');
  const a = 10;
+ const b = 20;
